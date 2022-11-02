@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20221027023750) do
+ActiveRecord::Schema.define(version: 20221102013227) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20221027023750) do
   create_table "neighborhoods", force: :cascade do |t|
     t.string  "name"
     t.integer "city_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.date    "checkin"
+    t.date    "checkout"
+    t.integer "guest_id"
+    t.integer "listing_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text    "description"
+    t.integer "rating"
+    t.integer "guest_id"
+    t.integer "reservation_id"
   end
 
   create_table "users", force: :cascade do |t|
